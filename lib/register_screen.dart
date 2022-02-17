@@ -7,6 +7,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = 'register_screen';
+
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
@@ -121,11 +122,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         email: email, password: password);
                     print(newUser.user);
                     if (newUser != null) {
+                      setState(() {
+                        showSpinner = false;
+                      });
                       Navigator.pushNamed(context, ChatScreen.id);
                     }
-                    setState(() {
-                      showSpinner = false;
-                    });
                   } catch (e) {
                     print(e);
                   }

@@ -81,6 +81,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         await _db.collection('messages').add({
                           'sender': loggedUser.email,
                           'text': messageText,
+                          'time': DateTime.now(),
                         });
                       },
                       child: Text(
@@ -147,7 +148,7 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _db.collection('messages').snapshots(),
+      stream: _db.collection('messages').orderBy('time', descending: true).snapshots(),
       builder: (context, snapshot) {
         List<MessageBubble> messageBubbles = [];
         if (!snapshot.hasData) {
@@ -157,21 +158,17 @@ class MessagesStream extends StatelessWidget {
             ),
           );
         } else {
-          final messages = snapshot.data?.docs.reversed;
+          final messages = snapshot.data?.docs;
           messageBubbles.clear();
           for (var message in messages!) {
             final messageText = message.get('text');
             final messageSender = message.get('sender');
             final currentUser = loggedUser.email;
-            if(currentUser == messageSender){
-
-            }
             final messageBubble = MessageBubble(
               sender: messageSender,
               text: messageText,
               isMe: currentUser == messageSender,
             );
-            Text('$messageText from $messageSender');
             messageBubbles.add(messageBubble);
           }
         }
