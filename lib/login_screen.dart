@@ -31,13 +31,15 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Container(
-                  height: 200,
-                  child: Icon(
-                    Icons.login,
-                    size: 200,
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 200,
+                    child: Icon(
+                      Icons.login,
+                      size: 200,
+                    ),
                   ),
                 ),
               ),
@@ -55,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Text(
                 'Sign in to continue',
@@ -67,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: 48,
+                height: 20,
               ),
               SizedBox(
                 width: 20,
