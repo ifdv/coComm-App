@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "456066903415",
+    "project_id": "cocomm-40041",
+    "storage_bucket": "cocomm-40041.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456066903415:android:04add2b17ee7ab4a1e4572",
+        "android_client_info": {
+          "package_name": "com.example.co_comm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456066903415-2p6nfqvcpgiske1hcv8904ee9pfq3m51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdPoaoIfBF8WELt_NuUQoTcjzmBi07zZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456066903415-2p6nfqvcpgiske1hcv8904ee9pfq3m51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
