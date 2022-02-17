@@ -1,7 +1,6 @@
-import 'package:co_comm/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:co_comm/rounded_button.dart';
-import 'package:co_comm/welcome_screen.dart';
+import 'package:co_comm/chat_screen.dart';
 import 'package:co_comm/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -99,7 +98,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   color: Colors.black,
                 ),
                 onChanged: (value) {
-                  email = value;
+                  password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
                     hintText: '••••••••••',
@@ -118,8 +117,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
+                    print(newUser.user);
                     if (newUser != null) {
-                      Navigator.pushNamed(context, LoginScreen.id);
+                      Navigator.pushNamed(context, ChatScreen.id);
                     }
                     setState(() {
                       showSpinner = false;

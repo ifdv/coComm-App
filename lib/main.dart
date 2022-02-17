@@ -1,3 +1,4 @@
+import 'package:co_comm/chat_screen.dart';
 import 'package:co_comm/login_screen.dart';
 import 'package:co_comm/register_screen.dart';
 import 'package:co_comm/welcome_screen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
+        ChatScreen.id: (context) => ChatScreen(),
       },
     );
   }

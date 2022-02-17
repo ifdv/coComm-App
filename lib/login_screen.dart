@@ -1,7 +1,10 @@
+import 'package:co_comm/chat_screen.dart';
 import 'package:co_comm/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:co_comm/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -13,6 +16,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showSpinner = false;
   late String email;
   late String password;
+  final _auth = FirebaseAuth.instance;
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.black,
                 ),
                 onChanged: (value) {
-                  email = value;
+                  password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
                     hintText: '••••••••••',
@@ -103,7 +108,18 @@ class _LoginScreenState extends State<LoginScreen> {
               RoundedButton(
                 title: 'Log in',
                 color: btnColor,
-                onPressed: () {},
+                onPressed: () async {
+                  setState(() {
+                    showSpinner=true;
+                  });
+                  try{
+                    final newUser = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                    if(newUser != null)
+                      Navigator.pushNamed(context, ChatScreen.id);
+                  }catch(e){
+                    print(e);
+                  }
+                },
               ),
             ],
           ),
